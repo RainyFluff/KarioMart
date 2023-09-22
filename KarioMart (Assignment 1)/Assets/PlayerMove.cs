@@ -20,5 +20,17 @@ public class PlayerMove : MonoBehaviour
         {
             rb.AddForce(transform.forward * force, ForceMode.Acceleration);
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddForce(-transform.forward * force, ForceMode.Acceleration);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rb.AddForce(-transform.right * force, ForceMode.Acceleration);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddForce(transform.right * force, ForceMode.Acceleration);
+        }
     }
 }
