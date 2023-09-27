@@ -23,6 +23,8 @@ public class PlayerMove : MonoBehaviour
         
         rb.AddForce(movementInput * force, ForceMode.Acceleration);
         
+        
+        
         //Debug.DrawLine(transform.position, transform.forward, Color.red,2f);
     }
 
