@@ -60,6 +60,11 @@ public class LerpTest : MonoBehaviour
         {
             transform.Rotate(0,1*rotationSpeed,0);
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StartCoroutine(Turbo());
+        }
     }
 
     void particleForces()
@@ -67,5 +72,12 @@ public class LerpTest : MonoBehaviour
         var main = speedTrails.main;
         main.startSpeed = new ParticleSystem.MinMaxCurve(0,_rb.velocity.magnitude);
         Debug.Log(_rb.velocity.magnitude);
+    }
+
+    IEnumerator Turbo()
+    {
+        maxSpeed = maxSpeed * 2;
+        yield return new WaitForSeconds(2);
+        maxSpeed = maxSpeed / 2;
     }
 }
