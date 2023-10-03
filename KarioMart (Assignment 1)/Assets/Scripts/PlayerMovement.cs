@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 { 
-    //NICKE FIXA ROTATIONEN
     public bool isPlayerOne = true;
    private float currentTime;
    public float timeToMove = 2f;
@@ -19,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
    private KeyCode right;
    private KeyCode left;
    public ParticleSystem speedTrails;
-   //my playermodels transforms have some fucked up rotation and this is a way to work around that problem
-   public GameObject position;
    private void Start()
    {
        
@@ -48,17 +45,18 @@ public class PlayerMovement : MonoBehaviour
    // Update is called once per frame
     void Update()
     {
-        particleForces();
+        //particleForces();
         //forward and backward movement uses a lerp and addforce.forcemode.acelleration
         // This is because I wanted to give the player an increased sense of acelleration, starting really slow and then getting faster.
-        if (Input.GetKey(forward))
-        {
+        if (Input.GetKey(forward)) {
             if (currentTime <= timeToMove)
             {
                 currentTime += Time.time;
                 xVelocity = Mathf.Lerp(_rb.velocity.x, maxSpeed, currentTime / timeToMove);
                 //Debug.Log(xVelocity);
-                _rb.AddForce(position.transform.forward * xVelocity, ForceMode.Acceleration);
+                //The duck playermodels have some fucked up transforms, this can be changed by opening them up in blender
+                //But I can't be bothered to learn blender enough to fix it so I chose to hardcode a solution.
+                _rb.AddForce(-transform.right * xVelocity, ForceMode.Acceleration);
             }
             else
             {
@@ -73,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
                     currentTime += Time.time;
                     xVelocity = Mathf.Lerp(_rb.velocity.x, -backMaxSpeed, currentTime / timeToMove);
                     //Debug.Log(xVelocity);
-                    _rb.AddForce(position.transform.forward * xVelocity, ForceMode.Acceleration);
+                    _rb.AddForce(-transform.right * xVelocity, ForceMode.Acceleration);
                 }
                 else
                 {
@@ -96,12 +94,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
    //wanted to add some speedlines to make it look prettier and give an increased sense of speed (feedback)
-    void particleForces()
+    /*void particleForces()
     {
-        var main = speedTrails.main;
-        main.startSpeed = new ParticleSystem.MinMaxCurve(0,_rb.velocity.magnitude);
-        Debug.Log(_rb.velocity.magnitude);
+        ParticleSystem.MainModule main = speedTrails.main;
+        ParticleSystem.ForceOverLifetimeModule speedTrailsForce = speedTrails.forceOverLifetime;
+        speedTrailsForce.x = Mathf.Abs(_rb.velocity.x);
+        speedTrailsForce.z = _rb.velocity.z;
+        Debug.Log(_rb.velocity.x);
+        //main.startSpeed = new ParticleSystem.MinMaxCurve(0,_rb.velocity.magnitude);
+        //Debug.Log(_rb.velocity.magnitude);
     }
+    */
 //a "turbo" or "sprint" that is incredibly simple
     IEnumerator Turbo()
     {

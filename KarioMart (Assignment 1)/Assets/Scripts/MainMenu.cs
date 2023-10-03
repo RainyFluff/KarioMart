@@ -7,11 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject levelMenu;
     public GameObject MainMenuHolder;
+    public GameObject creditsHolder;
     
     public void LevelMenu()
     {
         levelMenu.SetActive(true);
         MainMenuHolder.SetActive(false);
+        creditsHolder.SetActive(false);
     }
 
     public void Quit()
@@ -23,6 +25,7 @@ public class MainMenu : MonoBehaviour
     public void BackMenu()
     {
         levelMenu.SetActive(false);
+        creditsHolder.SetActive(false);
         MainMenuHolder.SetActive(true);
     }
 
@@ -37,5 +40,12 @@ public class MainMenu : MonoBehaviour
     public void LoadScene3()
     {
         
+    }
+
+    public void Credits()
+    {
+     creditsHolder.SetActive(true);   
+     MainMenuHolder.SetActive(false);
+     levelMenu.SetActive(false);
     }
 }
