@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 { 
+    //I wanted to add the ability to rotate the car whilst midair, but the ducks have some weird cursed rotations and did not allow that.
     public bool isPlayerOne = true;
    private float currentTime;
    public float timeToMove = 2f;
@@ -17,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
    private KeyCode backward;
    private KeyCode right;
    private KeyCode left;
-   public ParticleSystem speedTrails;
+   private KeyCode turbo;
+   //public ParticleSystem speedTrails;
    private void Start()
    {
        
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
            backward = KeyCode.S;
            right = KeyCode.D;
            left = KeyCode.A;
+           turbo = KeyCode.LeftShift;
        }
        else if (!isPlayerOne)
        {
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
            backward = KeyCode.DownArrow;
            right = KeyCode.RightArrow;
            left = KeyCode.LeftArrow;
+           turbo = KeyCode.RightShift;
        }
    }
 
@@ -88,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(0,0,1*rotationSpeed);
         }
         
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(turbo))
         {
             StartCoroutine(Turbo());
         }

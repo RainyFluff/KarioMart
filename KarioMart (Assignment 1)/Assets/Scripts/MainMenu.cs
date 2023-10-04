@@ -31,15 +31,15 @@ public class MainMenu : MonoBehaviour
 
     public void LoadScene1()
     {
-        SceneManager.LoadScene("UnitySave");
+        SceneManager.LoadScene("Level1");
     }
     public void LoadScene2()
     {
-        
+        SceneManager.LoadScene("Level2");
     }
     public void LoadScene3()
     {
-        
+        SceneManager.LoadScene("Level3");
     }
 
     public void Credits()
