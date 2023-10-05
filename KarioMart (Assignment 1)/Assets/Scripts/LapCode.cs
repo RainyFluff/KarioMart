@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -51,8 +50,10 @@ public class LapCode : MonoBehaviour
     {
         winScreen.SetActive(true);
         Time.timeScale = 0.2f;
+        Time.fixedDeltaTime = 0.2f * 0.02f;
         yield return new WaitForSecondsRealtime(5);
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        Time.fixedDeltaTime = 1f * 0.02f;
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }
