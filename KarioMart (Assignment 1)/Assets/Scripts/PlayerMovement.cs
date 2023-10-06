@@ -113,7 +113,16 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Turbo()
     {
         maxSpeed = maxSpeed * 2;
+        Debug.Log("Turbo started");
         yield return new WaitForSeconds(2);
         maxSpeed = maxSpeed / 2;
+    }
+
+    IEnumerator SpeedBoost()
+    {
+        maxSpeed = maxSpeed * 5;
+        Debug.Log("Turbo started");
+        yield return new WaitForSeconds(1);
+        maxSpeed = maxSpeed / 5;
     }
 }
