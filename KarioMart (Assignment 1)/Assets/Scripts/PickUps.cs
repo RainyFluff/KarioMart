@@ -10,15 +10,23 @@ public class PickUps : MonoBehaviour
     public float bombRadius = 10;
     public GameObject bombUISprite;
     private RaycastHit hit;
+    private Rigidbody rb;
     //debug vars
     //public Transform bombPos;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
-    // Update is called once per frame
     void Update()
     {
         if (hasBomb)
         {
             bombUISprite.SetActive(true);
+        }
+        else
+        {
+            bombUISprite.SetActive(false);
         }
 
         if (hasBomb && Input.GetKeyDown(KeyCode.Space))
@@ -28,7 +36,11 @@ public class PickUps : MonoBehaviour
                 if (collider.GetComponent<Rigidbody>() != null)
                 {
                     Rigidbody targetRB = collider.GetComponent<Rigidbody>();
-                    targetRB.AddExplosionForce(bombForce, transform.position, bombRadius);
+                    targetRB.AddExplosionForce(bombForce, transform.position, bombRadius, 1);
+                    if (targetRB == rb)
+                    {
+                        rb.AddExplosionForce(-bombForce, transform.position, bombRadius, 1);
+                    }
                 }
                 Debug.Log(collider.transform);
             }
@@ -38,7 +50,6 @@ public class PickUps : MonoBehaviour
         //bomb ui sprite activate and deactivate
         //pickup on the map being respawnable
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Bomb")
