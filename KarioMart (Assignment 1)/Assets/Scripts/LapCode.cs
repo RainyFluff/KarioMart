@@ -10,6 +10,8 @@ public class LapCode : MonoBehaviour
     public List<Collider> checkpoints;
     private int checkpointNumber;
     private int checkpointsGoneThrough;
+    public int laps = 3;
+    private int privLaps;
     public Collider start;
     private bool isFinished = false;
     public TextMeshProUGUI checkpointsText;

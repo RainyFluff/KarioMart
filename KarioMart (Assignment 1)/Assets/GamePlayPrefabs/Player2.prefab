@@ -230,6 +230,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3514804430553856910}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2e4d76e9f022b7141b7540ca99382ba6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -8665984186572188767}
   m_SourcePrefab: {fileID: 100100000, guid: 2e4d76e9f022b7141b7540ca99382ba6, type: 3}
 --- !u!4 &432882665893338518 stripped
 Transform:
@@ -325,3 +329,18 @@ MonoBehaviour:
   checkpointsText: {fileID: 0}
   winScreen: {fileID: 0}
   lapFinishedText: {fileID: 0}
+--- !u!114 &-8665984186572188767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957640341661370156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc37b1ded6496346a7a7f15d666f3e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombForce: 300
+  bombRadius: 10
+  bombUISprite: {fileID: 0}
