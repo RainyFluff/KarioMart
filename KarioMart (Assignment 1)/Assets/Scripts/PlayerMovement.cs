@@ -55,6 +55,9 @@ public class PlayerMovement : MonoBehaviour
         //particleForces();
         //forward and backward movement uses a lerp and addforce.forcemode.acelleration
         // This is because I wanted to give the player an increased sense of acelleration, starting really slow and then getting faster.
+        //There is no speed limit which makes the players theoretical max speed unlimited.
+        //If the player is fast enough it also creates a logic error for the collision detection that makes it so that the player can phase through some smaller colliders.
+        //This is easiest seen when trying to take a corner way to quickly.
         if (Input.GetKey(forward)) {
             if (currentTime <= timeToMove)
             {
@@ -64,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
                 //The duck playermodels have some fucked up transforms, this can be changed by opening them up in blender
                 //But I can't be bothered to learn blender enough to fix it so I chose to hardcode a solution.
                 //Since the project is small and doesn't have to be worked on by many people, this solutions works, for now.
+                //Another problem i recognized is that the ducks Rigidbody.Velocity is for some reason tied to their rotation.
+                //Use my Debug.log(_rb.velocity.magnitue) for a better explanation.
                 _rb.AddForce(-transform.right * xVelocity, ForceMode.Acceleration);
             }
             else
