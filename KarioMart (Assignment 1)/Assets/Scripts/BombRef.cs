@@ -24,4 +24,6 @@ public class BombRef : MonoBehaviour
             //Destroy(gameObject);
         }
     }
+    
+    //The timer set up above doesnt work, it never debugs my "Destroyed", so atleast I know thats where the problem stems from.
 }

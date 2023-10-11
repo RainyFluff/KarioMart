@@ -134,4 +134,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         maxSpeed = maxSpeed / 5;
     }
+    
+    //I made these into courountines since i am used to workin with them, I could try to fit them into my Update loop and save some memory
+    //But that would require learning exactly how I should do that for a very very small performance gain.
 }

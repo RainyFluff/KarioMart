@@ -66,4 +66,7 @@ public class LapCode : MonoBehaviour
         Time.fixedDeltaTime = 1f * 0.02f;
         SceneManager.LoadSceneAsync("MainMenu");
     }
+    
+    //Same as before, used to working with courountines so I used one here for when I wanted an easy function that could wait for me.
+    //Could maybe have optimized it more but for such a small project its not worth the work compared to performance gain.
 }

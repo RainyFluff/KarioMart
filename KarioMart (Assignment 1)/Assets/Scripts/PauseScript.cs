@@ -40,4 +40,5 @@ public class PauseScript : MonoBehaviour
     }
     
     //really simple script just activating and deactivating different gameobjects that contain different parts of the pause menu.
+    //Is not modular, adding more features to the pause script would require adding more code here but since there wont be any more features. Thats not a big deal.
 }
