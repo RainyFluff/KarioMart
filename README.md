@@ -27,3 +27,4 @@ Mostly used Unity docs and old Github projects.
 
 # Nikodemius Ivarsson, Unity 2022.3.8f1
 # All compiler errors should be fixed and the game is therefore buildable.
+# I reccomend opening this up in a TXT viewer or visual studio, its a lot easier to read then.
