@@ -11,15 +11,19 @@ public class PickUps : MonoBehaviour
     public GameObject bombUISprite;
     private RaycastHit hit;
     private Rigidbody rb;
-    //debug vars
-    //public Transform bombPos;
+    private PlayerMovement _playerMovement;
+    private KeyCode usableKey;
+    //All variables and a keycode for the bombs
     private void Start()
     {
+        _playerMovement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody>();
+        //declaring important variables
     }
 
     void Update()
     {
+        usableKey = _playerMovement.usable;
         if (hasBomb)
         {
             bombUISprite.SetActive(true);
@@ -28,8 +32,8 @@ public class PickUps : MonoBehaviour
         {
             bombUISprite.SetActive(false);
         }
-
-        if (hasBomb && Input.GetKeyDown(KeyCode.Space))
+ //decided to add the force from the bomb this way since its easy and accomplishes the effect im looking for.
+        if (hasBomb && Input.GetKeyDown(usableKey))
         {
             foreach(Collider collider in Physics.OverlapSphere(transform.position, bombRadius))
             {

@@ -15,4 +15,6 @@ public class SpeedPad : MonoBehaviour
            Debug.Log("PlayerMovement found");
        }
     }
+    
+    //Hardcoded speedboost, simply checks if the player has collided with it and then runs a courountine in the playermovement script.
 }

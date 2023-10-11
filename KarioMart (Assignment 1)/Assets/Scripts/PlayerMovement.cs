@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
    private KeyCode right;
    private KeyCode left;
    private KeyCode turbo;
+   public KeyCode usable;
    //public ParticleSystem speedTrails;
    private void Start()
    {
@@ -35,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
            right = KeyCode.D;
            left = KeyCode.A;
            turbo = KeyCode.LeftShift;
+           usable = KeyCode.LeftControl;
        }
        else if (!isPlayerOne)
        {
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
            right = KeyCode.RightArrow;
            left = KeyCode.LeftArrow;
            turbo = KeyCode.RightShift;
+           usable = KeyCode.RightControl;
        }
    }
 
@@ -60,6 +63,7 @@ public class PlayerMovement : MonoBehaviour
                 //Debug.Log(xVelocity);
                 //The duck playermodels have some fucked up transforms, this can be changed by opening them up in blender
                 //But I can't be bothered to learn blender enough to fix it so I chose to hardcode a solution.
+                //Since the project is small and doesn't have to be worked on by many people, this solutions works, for now.
                 _rb.AddForce(-transform.right * xVelocity, ForceMode.Acceleration);
             }
             else
@@ -117,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(2);
         maxSpeed = maxSpeed / 2;
     }
-
+ //A function for the speedpad, just a stronger "Turbo" that lasts for less time
     IEnumerator SpeedBoost()
     {
         maxSpeed = maxSpeed * 5;

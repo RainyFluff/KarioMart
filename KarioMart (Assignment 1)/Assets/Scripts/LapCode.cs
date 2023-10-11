@@ -27,7 +27,14 @@ public class LapCode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checking if i have gone through enough checkpoints to count it as a lap.
         if (checkpointNumber == checkpointsGoneThrough)
+        {
+            privLaps++;
+            checkpointsGoneThrough = 0;
+        }
+//Increases my laps so that i can then later finish a level.
+        if (privLaps >= laps)
         {
             lapFinishedText.SetActive(true);
             isFinished = true;
@@ -37,6 +44,7 @@ public class LapCode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //Simple checks for if i have collided with a checkpoint or my finish line.
         if (other.tag == "Checkpoint")
         {
             checkpointsGoneThrough++;
@@ -47,9 +55,9 @@ public class LapCode : MonoBehaviour
             StartCoroutine(finish());
         }
     }
-
     IEnumerator finish()
     {
+        //A courountine to activate post processing, UI, slow time and to then change scene after 5 seconds.
         winScreen.SetActive(true);
         Time.timeScale = 0.2f;
         Time.fixedDeltaTime = 0.2f * 0.02f;

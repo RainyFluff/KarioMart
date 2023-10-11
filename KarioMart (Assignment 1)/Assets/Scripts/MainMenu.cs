@@ -48,4 +48,6 @@ public class MainMenu : MonoBehaviour
      MainMenuHolder.SetActive(false);
      levelMenu.SetActive(false);
     }
+    //Very simple main menu, deactivating and activating gameobjects and loading scenes from string.
+    //Maybe not the most resource effective solution but it works for such a small project.
 }

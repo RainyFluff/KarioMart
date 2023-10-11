@@ -38,4 +38,6 @@ public class PauseScript : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
     }
+    
+    //really simple script just activating and deactivating different gameobjects that contain different parts of the pause menu.
 }
